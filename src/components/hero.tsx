@@ -1,17 +1,13 @@
 import heroIllustration from "@/assets/images/hero.png";
 import Image from "next/image";
+import Button from "./button";
 
 export default () => {
   return (
-    <main className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/5">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full blur-3xl" />
-      </div>
-
+    <main className="h-[calc(100vh-78px)] md:flex md:items-center relative py-16 md:py-24 overflow-hidden bg-[url('/bg-curve.png')] bg-no-repeat bg-cover bg-center">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 animate-fade-in">
+        <div className="grid md:grid-cols-2 md:gap-12 gap-4 items-center">
+          <div className="space-y-6">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
               Bridge Academic Dreams and{" "}
               <span className="text-primary">Career Goals</span>
@@ -19,9 +15,9 @@ export default () => {
             <p className="text-lg md:text-xl text-muted-foreground font-medium">
               Unlock Career Prospects
             </p>
-            <button className="text-base text-white rounded-md px-8 py-6 bg-primary">
-              Get Started Now
-            </button>
+            <Button as="a" href="#" className="w-1/2">
+              Get Started
+            </Button>
           </div>
 
           <div className="relative animate-fade-in">
