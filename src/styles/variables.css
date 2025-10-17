@@ -1,0 +1,57 @@
+:root {
+  /* Core Colors */
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222 47% 11%);
+
+  /* Primary Colors */
+  --color-primary: hsl(262 80% 64%);
+  --color-primary-foreground: hsl(0 0% 100%);
+
+  /* Secondary Colors */
+  --color-secondary: hsl(270 60% 95%);
+  --color-secondary-foreground: hsl(222 47% 11%);
+
+  /* Accent Colors */
+  --color-accent: hsl(280 85% 68%);
+  --color-accent-foreground: hsl(0 0% 100%);
+
+  /* Neutral Colors */
+  --color-muted: hsl(270 20% 96%);
+  --color-muted-foreground: hsl(215 16% 47%);
+
+  /* Semantic Colors */
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  /* Component Colors */
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222 47% 11%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222 47% 11%);
+
+  /* Form & Border Colors */
+  --color-border: hsl(270 30% 91%);
+  --color-input: hsl(270 30% 91%);
+  --color-ring: hsl(262 80% 64%);
+
+  /* Sidebar Colors */
+  --color-sidebar-background: hsl(0 0% 98%);
+  --color-sidebar-foreground: hsl(240 5.3% 26.1%);
+  --color-sidebar-primary: hsl(240 5.9% 10%);
+  --color-sidebar-primary-foreground: hsl(0 0% 98%);
+  --color-sidebar-accent: hsl(240 4.8% 95.9%);
+  --color-sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --color-sidebar-border: hsl(220 13% 91%);
+  --color-sidebar-ring: hsl(217.2 91.2% 59.8%);
+
+  /* Spacing & Sizing */
+  --radius: 0.75rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 hsl(222 47% 11% / 0.05);
+  --shadow-md: 0 4px 6px -1px hsl(222 47% 11% / 0.1);
+  --shadow-lg: 0 10px 15px -3px hsl(222 47% 11% / 0.1);
+
+  /* Transitions */
+  --transition-base: all 0.2s ease;
+}
