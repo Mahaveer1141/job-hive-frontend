@@ -2,7 +2,7 @@ import { GraduationCap, Building2, Users } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
-export default () => {
+export default function Feature() {
   const features = [
     {
       icon: GraduationCap,
@@ -74,4 +74,4 @@ export default () => {
       </div>
     </section>
   );
-};
+}

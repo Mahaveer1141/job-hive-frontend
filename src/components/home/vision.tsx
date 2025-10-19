@@ -2,7 +2,7 @@ import Image from "next/image";
 import visionImage from "@/assets/images/vision.jpg";
 import { Sparkles } from "lucide-react";
 
-export default () => {
+export default function Vision() {
   return (
     <section className="py-24 md:py-32 bg-primary relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
@@ -69,4 +69,4 @@ export default () => {
       </div>
     </section>
   );
-};
+}

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "@/assets/images/full-logo.png";
 
-export default () => {
+export default function Navbar() {
   return (
     <nav className=" bg-primary backdrop-blur sticky top-0 supports-[backdrop-filter]:bg-primary/95 z-50 shadow-lg">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -25,4 +25,4 @@ export default () => {
       </div>
     </nav>
   );
-};
+}

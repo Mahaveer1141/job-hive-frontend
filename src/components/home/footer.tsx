@@ -1,4 +1,4 @@
-export default () => {
+export default function Footer() {
   return (
     <footer className="py-8 border-t bg-background">
       <div className="container mx-auto px-4">
@@ -8,4 +8,4 @@ export default () => {
       </div>
     </footer>
   );
-};
+}

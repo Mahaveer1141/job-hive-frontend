@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
-export default () => {
+export default function Hero() {
   return (
     <main className="h-[calc(100vh-78px)] md:flex md:items-center relative py-16 md:py-24 overflow-hidden bg-[url('/bg-curve.png')] bg-no-repeat bg-cover bg-center">
       <div className="container mx-auto px-4 relative z-10">
@@ -33,4 +33,4 @@ export default () => {
       </div>
     </main>
   );
-};
+}
