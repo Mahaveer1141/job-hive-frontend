@@ -1,6 +1,7 @@
 import heroIllustration from "@/assets/images/hero.png";
 import Image from "next/image";
-import Button from "./button";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 export default () => {
   return (
@@ -15,8 +16,8 @@ export default () => {
             <p className="text-lg md:text-xl text-muted-foreground font-medium">
               Unlock Career Prospects
             </p>
-            <Button as="a" href="#" className="w-1/2">
-              Get Started
+            <Button size="lg" className="w-1/2">
+              <Link href="/auth">Get Started</Link>
             </Button>
           </div>
 

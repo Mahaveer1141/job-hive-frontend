@@ -1,5 +1,6 @@
 import { GraduationCap, Building2, Users } from "lucide-react";
-import Button from "./button";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default () => {
   const features = [
@@ -64,8 +65,8 @@ export default () => {
                 </p>
               </div>
 
-              <Button as="a" href="#" className="w-full">
-                {feature.buttonText}
+              <Button size="lg" className="w-full">
+                <Link href="/auth">{feature.buttonText}</Link>
               </Button>
             </div>
           ))}
