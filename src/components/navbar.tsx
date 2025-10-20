@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import logo from "@/assets/images/full-logo.png";
 
 export default function Navbar() {
@@ -9,18 +10,12 @@ export default function Navbar() {
           <Image src={logo} alt="logo" height={30} />
         </div>
         <div className="flex items-center gap-4">
-          <a
+          <Link
             className="flex items-center justify-center rounded-md text-sm font-medium md:px-4 px-2 py-2 text-secondary hover:bg-primary-foreground/10"
-            href="#"
-          >
-            Sign Up
-          </a>
-          <a
-            className="flex items-center justify-center rounded-md text-sm font-medium md:px-4 px-2 py-2 text-secondary hover:bg-primary-foreground/10"
-            href="#"
+            href="/auth"
           >
             Login
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

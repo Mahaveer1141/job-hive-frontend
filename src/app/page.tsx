@@ -6,7 +6,7 @@ import Footer from "@/components/home/footer";
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <Navbar />
       <Hero />
       <Vision />
