@@ -1,236 +1,186 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Plus, Search, Filter } from "lucide-react";
+  Briefcase,
+  FileText,
+  Users,
+  TrendingUp,
+  Plus,
+  Eye,
+  Settings,
+  ArrowUpRight
+} from "lucide-react";
 
-const jobsData = [
+const stats = [
   {
-    id: "JOB-2001",
-    title: "Senior React Developer",
-    company: "TechCorp",
-    location: "Remote",
-    type: "Full-time",
-    status: "Active",
-    applications: 12,
-    postedDate: "15 Oct, 2025"
+    title: "Total Jobs",
+    value: "24",
+    icon: Briefcase,
+    trend: "+12% from last month"
   },
   {
-    id: "JOB-2002",
-    title: "UI/UX Designer",
-    company: "DesignHub",
-    location: "New York, NY",
-    type: "Full-time",
-    status: "Active",
-    applications: 8,
-    postedDate: "14 Oct, 2025"
+    title: "Applications",
+    value: "156",
+    icon: FileText,
+    trend: "+8% from last month"
   },
   {
-    id: "JOB-2003",
-    title: "Backend Engineer",
-    company: "DataSystems",
-    location: "San Francisco, CA",
-    type: "Contract",
-    status: "Closed",
-    applications: 24,
-    postedDate: "10 Oct, 2025"
+    title: "Active Users",
+    value: "89",
+    icon: Users,
+    trend: "+23% from last month"
   },
   {
-    id: "JOB-2004",
-    title: "Product Manager",
-    company: "InnovateLabs",
-    location: "Boston, MA",
-    type: "Full-time",
-    status: "Active",
-    applications: 15,
-    postedDate: "12 Oct, 2025"
+    title: "Placement Rate",
+    value: "68%",
+    icon: TrendingUp,
+    trend: "+5% from last month"
   }
 ];
 
-export default function AdminJobs() {
-  const router = useRouter();
-  const [selectedJobs, setSelectedJobs] = useState<string[]>([]);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const toggleJobSelection = (jobId: string) => {
-    setSelectedJobs((prev) =>
-      prev.includes(jobId)
-        ? prev.filter((id) => id !== jobId)
-        : [...prev, jobId]
-    );
-  };
-
-  const toggleAllJobs = () => {
-    if (selectedJobs.length === jobsData.length) {
-      setSelectedJobs([]);
-    } else {
-      setSelectedJobs(jobsData.map((job) => job.id));
-    }
-  };
-
-  const getCompanyInitials = (company: string) => {
-    return company
-      .split(" ")
-      .map((word) => word[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 2);
-  };
-
+export default function Dashboard() {
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">Jobs</h1>
-          <p className="text-muted-foreground">
-            Manage and track all job postings
-          </p>
-        </div>
-        <Button
-          className="gap-2"
-          onClick={() => router.push("/admin/jobs/new")}
-        >
-          <Plus className="h-4 w-4" />
-          Post New Job
-        </Button>
+      <div>
+        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <p className="text-muted-foreground">
+          Welcome back! Here's an overview of your platform.
+        </p>
       </div>
 
-      <Card className="border">
-        <div className="p-4">
-          {/* Search and Filter Bar */}
-          <div className="flex items-center gap-3 mb-4">
-            <div className="relative flex-1 max-w-sm">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search jobs..."
-                className="pl-9"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-            <Button variant="outline" className="gap-2">
-              <Filter className="h-4 w-4" />
-              Filter
-            </Button>
-            {selectedJobs.length > 0 && (
-              <Button variant="outline" onClick={() => setSelectedJobs([])}>
-                Clear selection
-              </Button>
-            )}
-          </div>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {stats.map((stat, index) => (
+          <Card
+            key={index}
+            className="relative overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2"
+          >
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full" />
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">
+                {stat.title}
+              </CardTitle>
+              <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <stat.icon className="h-5 w-5 text-primary" />
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold mb-2">{stat.value}</div>
+              <p className="text-xs text-muted-foreground flex items-center gap-1">
+                <ArrowUpRight className="h-3 w-3 text-green-500" />
+                {stat.trend}
+              </p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
 
-          {/* Table */}
-          <div className="border rounded-lg overflow-hidden">
-            <Table>
-              <TableHeader>
-                <TableRow className="hover:bg-transparent bg-muted/30">
-                  <TableHead className="w-10 py-3">
-                    <Checkbox
-                      checked={selectedJobs.length === jobsData.length}
-                      onCheckedChange={toggleAllJobs}
-                      className="border-2"
-                    />
-                  </TableHead>
-                  <TableHead className="font-semibold py-3">ID</TableHead>
-                  <TableHead className="font-semibold py-3">
-                    Job Title
-                  </TableHead>
-                  <TableHead className="font-semibold py-3">Company</TableHead>
-                  <TableHead className="font-semibold py-3">Location</TableHead>
-                  <TableHead className="font-semibold py-3">Type</TableHead>
-                  <TableHead className="font-semibold py-3">Status</TableHead>
-                  <TableHead className="font-semibold py-3">
-                    Applications
-                  </TableHead>
-                  <TableHead className="font-semibold py-3">
-                    Posted Date
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {jobsData.map((job, index) => (
-                  <TableRow
-                    key={job.id}
-                    className="hover:bg-muted/50 cursor-pointer transition-colors"
-                    onClick={() => router.push(`/jobs/${job.id}`)}
-                  >
-                    <TableCell
-                      className="py-3"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Checkbox
-                        checked={selectedJobs.includes(job.id)}
-                        onCheckedChange={() => toggleJobSelection(job.id)}
-                        className="border-2 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
-                      />
-                    </TableCell>
-                    <TableCell className="py-3">
-                      <span className="text-primary font-medium hover:underline">
-                        {job.id}
-                      </span>
-                    </TableCell>
-                    <TableCell className="font-medium py-3">
-                      {job.title}
-                    </TableCell>
-                    <TableCell className="py-3">
-                      <div className="flex items-center gap-2">
-                        <Avatar className="h-7 w-7">
-                          <AvatarFallback className="bg-primary/10 text-primary text-xs font-semibold">
-                            {getCompanyInitials(job.company)}
-                          </AvatarFallback>
-                        </Avatar>
-                        <span className="text-muted-foreground text-sm">
-                          {job.company}
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-muted-foreground text-sm py-3">
-                      {job.location}
-                    </TableCell>
-                    <TableCell className="py-3">
-                      <Badge variant="outline" className="font-normal text-xs">
-                        {job.type}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="py-3">
-                      <Badge
-                        variant={
-                          job.status === "Active" ? "default" : "secondary"
-                        }
-                        className="font-medium text-xs"
-                      >
-                        {job.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="py-3">
-                      <span className="inline-flex items-center justify-center h-5 px-2 rounded bg-primary/10 text-primary font-medium text-xs">
-                        {job.applications}
-                      </span>
-                    </TableCell>
-                    <TableCell className="text-muted-foreground text-sm py-3">
-                      {job.postedDate}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </div>
-      </Card>
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card className="border-2">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FileText className="h-5 w-5 text-primary" />
+              Recent Activity
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {[
+                {
+                  action: "New application received",
+                  time: "2 hours ago",
+                  type: "application"
+                },
+                {
+                  action: "Job posting published",
+                  time: "5 hours ago",
+                  type: "job"
+                },
+                { action: "User registration", time: "1 day ago", type: "user" }
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-between p-4 bg-muted/30 hover:bg-muted/50 rounded-lg transition-colors border"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      {item.type === "application" && (
+                        <FileText className="h-4 w-4 text-primary" />
+                      )}
+                      {item.type === "job" && (
+                        <Briefcase className="h-4 w-4 text-primary" />
+                      )}
+                      {item.type === "user" && (
+                        <Users className="h-4 w-4 text-primary" />
+                      )}
+                    </div>
+                    <div>
+                      <p className="font-medium text-sm">{item.action}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {item.time}
+                      </p>
+                    </div>
+                  </div>
+                  <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Eye className="h-4 w-4" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-2">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Settings className="h-5 w-5 text-primary" />
+              Quick Actions
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <Button
+                variant="outline"
+                className="w-full justify-start h-auto py-4 hover:bg-primary/10 hover:text-primary hover:border-primary transition-all"
+              >
+                <Plus className="h-4 w-4 mr-3" />
+                <div className="text-left">
+                  <Link href="/company-admin/jobs/new" className="font-medium">
+                    Post New Job
+                  </Link>
+                  <div className="text-xs text-muted-foreground">
+                    Create a new job listing
+                  </div>
+                </div>
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full justify-start h-auto py-4 hover:bg-primary/10 hover:text-primary hover:border-primary transition-all"
+              >
+                <Eye className="h-4 w-4 mr-3" />
+                <div className="text-left">
+                  <div className="font-medium">Review Applications</div>
+                  <div className="text-xs text-muted-foreground">
+                    Check pending applications
+                  </div>
+                </div>
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full justify-start h-auto py-4 hover:bg-primary/10 hover:text-primary hover:border-primary transition-all"
+              >
+                <Users className="h-4 w-4 mr-3" />
+                <div className="text-left">
+                  <div className="font-medium">Manage Users</div>
+                  <div className="text-xs text-muted-foreground">
+                    View and edit user accounts
+                  </div>
+                </div>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

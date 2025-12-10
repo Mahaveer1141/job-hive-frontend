@@ -1,4 +1,6 @@
-import { Sparkles, Briefcase, FileText, Home, Users } from "lucide-react";
+"use client";
+
+import { Briefcase, FileText, Home, Users } from "lucide-react";
 import {
   useSidebar,
   SidebarContent,
@@ -11,6 +13,9 @@ import {
   Sidebar
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import logo from "@/assets/images/logo-letter.png";
 
 const menuItems = [
   { title: "Dashboard", url: "/company-admin", icon: Home },
@@ -21,13 +26,13 @@ const menuItems = [
 
 export default function AdminSidebar() {
   const { state } = useSidebar();
+  const pathname = usePathname();
   const isCollapsed = state === "collapsed";
 
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? "bg-primary text-primary-foreground font-medium shadow-sm"
       : "text-foreground/80 hover:bg-accent/10 hover:text-foreground transition-colors";
-
   return (
     <Sidebar className={isCollapsed ? "w-16" : "w-64"} collapsible="icon">
       <SidebarContent className="bg-sidebar-background border-r border-sidebar-border">
@@ -37,8 +42,8 @@ export default function AdminSidebar() {
           }`}
         >
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-              <Sparkles className="h-5 w-5" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg text-sidebar-primary-foreground">
+              <Image alt="logo" src={logo} />
             </div>
             {!isCollapsed && (
               <div>
@@ -69,7 +74,7 @@ export default function AdminSidebar() {
                     <Link
                       href={item.url}
                       className={getNavCls({
-                        isActive: item.url == window.location.pathname
+                        isActive: item.url == pathname
                       })}
                     >
                       <item.icon className="h-5 w-5" />

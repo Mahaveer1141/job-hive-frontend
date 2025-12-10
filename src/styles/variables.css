@@ -4,15 +4,15 @@
   --color-foreground: oklch(24.5% 0.055 254);
 
   /* Primary Colors */
-  --color-primary: oklch(68.8% 0.196 303);
+  --color-primary: oklch(60.119% 0.21143 296.386);
   --color-primary-foreground: oklch(100% 0 0);
 
   /* Secondary Colors */
-  --color-secondary: oklch(95.6% 0.024 302);
+  --color-secondary: oklch(94.987% 0.02136 306.672);
   --color-secondary-foreground: oklch(24.5% 0.055 254);
 
   /* Accent Colors */
-  --color-accent: oklch(73.1% 0.195 328);
+  --color-accent: oklch(68.127% 0.2111 313.033);
   --color-accent-foreground: oklch(100% 0 0);
 
   /* Neutral Colors */

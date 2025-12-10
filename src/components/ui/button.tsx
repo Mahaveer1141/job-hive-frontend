@@ -18,7 +18,9 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline"
+        link: "text-primary underline-offset-4 hover:underline",
+        clickable:
+          "relative bg-background/80 text-foreground font-semibold border-2 border-primary rounded-full shadow-[0_0_15px_color-mix(in_oklch,var(--color-primary)_50%,transparent),0_4px_0_color-mix(in_oklch,var(--color-primary)_60%,transparent)] hover:shadow-[0_0_25px_color-mix(in_oklch,var(--color-primary)_70%,transparent),0_4px_0_color-mix(in_oklch,var(--color-primary)_70%,transparent)] active:shadow-[0_0_15px_color-mix(in_oklch,var(--color-primary)_50%,transparent),0_1px_0_color-mix(in_oklch,var(--color-primary)_60%,transparent)] active:translate-y-[3px] transition-all duration-150"
       },
       size: {
         default: "h-10 px-4 py-2",

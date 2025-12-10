@@ -65,7 +65,7 @@ export default function Feature() {
                 </p>
               </div>
 
-              <Button size="lg" className="w-full">
+              <Button variant='clickable' size="lg" className="w-full">
                 <Link href="/auth">{feature.buttonText}</Link>
               </Button>
             </div>

@@ -16,7 +16,7 @@ export default function Hero() {
             <p className="text-lg md:text-xl text-muted-foreground font-medium">
               Unlock Career Prospects
             </p>
-            <Button size="lg" className="w-1/2">
+            <Button size="lg" className="w-1/2" variant="clickable">
               <Link href="/auth">Get Started</Link>
             </Button>
           </div>
